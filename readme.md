@@ -22,11 +22,11 @@ The visualisations should be *interactive* wherever possible. The reason for thi
 
 A *positive-definite symmetric matrix* can be depicted as an ellipse in 2-dimensions, or an ellipsoid in 3-dimensions. Formally, this follows from the spectral theorem.
 
-A $2 \times 2$ triangular matrix can be depicted as a 3D coordinate.
+A *2x2* triangular matrix can be depicted as a 3D coordinate.
 
 ## TODO
 
 -   Move away from Python into Javascript. This should enable interactivity in the browser.
 -   Visualise QR algorithm with Wilkinson shifts. Each iteration is *discontinuous* as opposed to *continuous*. The input matrix should be depicted as an ellipse. The output matrix should be depicted as an ellipse.
--   Visualise Cholesky decomposition for $2 \times 2$ matrices. The input matrix should be depicted as an ellipse. The output triangular matrix should be depicted as a point in 3-dimensional space.
--   Visualise the Lanczos algorithm for $3 \times 3$ matrices. The input matrix should be depicted as an ellipsoid. What output would be useful is *to be determined*.
+-   Visualise Cholesky decomposition for *2x2* matrices. The input matrix should be depicted as an ellipse. The output triangular matrix should be depicted as a point in 3-dimensional space.
+-   Visualise the Lanczos algorithm for *3x3* matrices. The input matrix should be depicted as an ellipsoid. What output would be useful is *to be determined*.
