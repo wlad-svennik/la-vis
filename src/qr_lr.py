@@ -131,7 +131,7 @@ while running:
                     lroutangle,
                     width=2)
     draw_line_angle(screen,
-                    (0,255,255),
+                    (0,255,0),
                     (centrex - lroutsemiaxis1, centrey),
                     (centrex + lroutsemiaxis1, centrey),
                     lroutangle,
