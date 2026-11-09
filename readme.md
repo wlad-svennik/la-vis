@@ -1,32 +1,36 @@
-# Visualising algorithms on symmetric matrices
+# Visualising QR and LR iteration
 
-## Examples
+An interactive Python visualisation of one QR step and one LR (Cholesky) step on a positive-definite symmetric 2×2 matrix.
 
-### QR algorithm and LR algorithm
+The input and output matrices are drawn as ellipses. Changing the input lets you see how each iteration changes its principal axes and how the diagonal matrices appear as fixed points.
 
-Here, we have a GIF animation of an interactive visualisation of the *QR* and *LR* algorithms for finding eigenvalues:
+![One iteration of QR and LR](recordings/qr_lr.gif)
 
-![depiction of one iteration of QR and LR](recordings/qr_lr.gif)
+## Run the visualisation
 
-This depicts the result of *one iteration* of the algorithm in the form of a GIF animation. The ellipses denote *positive-definite symmetric matrices*. Such a representation by ellipses is possible because of the *spectral theorem*. Notice how the output is a *continuous function* of the input. Also notice how as the input matrix is rotated, it encounters two fixed points corresponding to its diagonalisations. One of these fixed points is stable, while the other is unstable.
+Requires Python 3, NumPy and Pygame. From the repository directory:
 
-The link to the Python code is [here](src/qr_lr.py). It uses Pygame and Numpy, and is very, very rough (as a minimum viable product should be). It would be better if it could run in a browser.
+```sh
+python -m pip install numpy pygame
+python src/qr_lr.py
+```
 
-## Motivation
+Press any key at the introduction screen, then use:
 
-Many algorithms (like the QR algorithm for finding eigenvalues) are described in ways that are hard to understand. Specifically, it's unclear why these algorithms achieve their objectives. This is especially mysterious when the algorithms are based on fixed-point iteration, like the QR algorithm. In this repository, we hope to introduce *interactive visualisations* of linear algebra algorithms which should enable someone to understand how a given algorithm behaves when its inputs are varied.
+| Control | Action |
+| --- | --- |
+| Left / right arrows | Rotate the input ellipse |
+| Up / down arrows | Adjust its second semiaxis |
 
-## Details
+The input is red, the QR output is blue, and the LR output is green. Keep the second semiaxis positive: the Cholesky step requires a positive-definite matrix.
 
-The visualisations should be *interactive* wherever possible. The reason for this is that it allows someone to see how the output of an algorithm varies when its input is changed. This can enable someone to see how the input influences convergence rate.
+## How it works
 
-A *positive-definite symmetric matrix* can be depicted as an ellipse in 2-dimensions, or an ellipsoid in 3-dimensions. Formally, this follows from the spectral theorem.
+For the QR step, the program factors the input as `A = QR`, with positive diagonal entries in `R`, and displays `RQ`.
 
-A *2x2* triangular matrix can be depicted as a 3D coordinate.
+For the LR step, it computes the Cholesky factorisation `A = LLᵀ` and displays `LᵀL`.
 
-## TODO
+Each output has the same eigenvalues as the input. The visualisation shows a single iteration as the input varies.
 
--   Move away from Python into Javascript. This should enable interactivity in the browser.
--   Visualise QR algorithm with Wilkinson shifts. Each iteration is *discontinuous* as opposed to *continuous*. The input matrix should be depicted as an ellipse. The output matrix should be depicted as an ellipse.
--   Visualise Cholesky decomposition for *2x2* matrices. The input matrix should be depicted as an ellipse. The output triangular matrix should be depicted as a point in 3-dimensional space.
--   Visualise the Lanczos algorithm for *3x3* matrices. The input matrix should be depicted as an ellipsoid. What output would be useful is *to be determined*.
+The implementation is in [src/qr_lr.py](src/qr_lr.py).
+
